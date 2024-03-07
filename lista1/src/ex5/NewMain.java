@@ -33,7 +33,7 @@ public class NewMain {
             System.out.println("Digite 5 para somar um valor");
             System.out.println("Digite 6 para subtrair um valor");
             System.out.println("Digite 7 para multiplicar um valor");
-            System.out.println("Digite 8 para subtrair um valor");
+            System.out.println("Digite 8 para dividir um valor");
             System.out.println("Digite 9 para sair");
 
             op = scanner.nextInt();

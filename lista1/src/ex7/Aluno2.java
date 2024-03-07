@@ -13,7 +13,7 @@ public class Aluno2 {
     public double notatotal = 0;
 
     public void recebeNota1(double nota1) {
-        notatotal = nota1;
+        notatotal = notatotal + nota1;
     }
 
     public void recebeNota2(double nota2) {
@@ -31,7 +31,13 @@ public class Aluno2 {
     }
 
     public void imprimeMedia() {
-        System.out.println(notatotal/4);
+        System.out.println("media"+notatotal/4);
+        if(notatotal/4 >= 6){
+            System.out.println("Aprovado");
+        }else{
+            System.out.println("Reprovado");
+        }
+        
     }
 
 }

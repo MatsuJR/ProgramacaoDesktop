@@ -29,6 +29,11 @@ public class Inteiro2 extends ex4.Inteiro{
     }
     
     public int dividePor(int divisor){
+        if(divisor == 0){
+            System.err.println("Erro: divisor igual a zero");
+            return divisor;
+        }
+        
         valor = valor / divisor;
         return valor;
     }
