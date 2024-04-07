@@ -1,20 +1,11 @@
 package Model;
-/**
- *
- * @author Junior
- */
+
 public class FuncionarioModel {
+
     private int idFuncionario;
     private String nomeFuncionario;
     private String cargo;
 
-    public FuncionarioModel(int idFuncionario, String nomeFuncionario, String cargo) {
-        this.idFuncionario = idFuncionario;
-        this.nomeFuncionario = nomeFuncionario;
-        this.cargo = cargo;
-    }
-
-    
     public int getIdFuncionario() {
         return idFuncionario;
     }
@@ -38,6 +29,5 @@ public class FuncionarioModel {
     public void setCargo(String cargo) {
         this.cargo = cargo;
     }
-    
-    
+
 }

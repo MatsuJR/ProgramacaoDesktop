@@ -1,21 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Controller;
 
-/**
- *
- * @author Junior
- */
 import java.io.File;
 import javax.swing.JFileChooser;
+
 
 public abstract class ControllerFile {
     protected File arquivo = null;
 
-    public abstract boolean ler();
-    public abstract boolean escrever(boolean append);
+    public abstract boolean ler(String nomeArquivo);
+    public abstract boolean escrever(String nomeArquivo, boolean append);
 
     public File getArquivo() {
         return arquivo;

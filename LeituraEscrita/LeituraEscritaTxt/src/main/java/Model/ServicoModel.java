@@ -1,20 +1,11 @@
 
 package Model;
 
-/**
- *
- * @author Junior
- */
 public class ServicoModel {
     private int idServico;
     private String descricao;
     private String cliente;
 
-    public ServicoModel(int idServico, String descricao, String cliente) {
-        this.idServico = idServico;
-        this.descricao = descricao;
-        this.cliente = cliente;
-    }
 
     public int getIdServico() {
         return idServico;

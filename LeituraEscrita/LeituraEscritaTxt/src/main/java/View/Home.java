@@ -92,18 +92,34 @@ public class Home extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void clientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clientesActionPerformed
-        // TODO add your handling code here:
+        ClienteView clienteView = new ClienteView();
+
+        clienteView.setLocationRelativeTo(null);
+
+        clienteView.setVisible(true);
+
         dispose();
-        ClienteView c = new ClienteView();
-        c.setVisible(true);
+
     }//GEN-LAST:event_clientesActionPerformed
 
     private void servicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_servicosActionPerformed
-        // TODO add your handling code here:
+        ServicoView servicoView = new ServicoView();
+
+        servicoView.setLocationRelativeTo(null);
+
+        servicoView.setVisible(true);
+
+        dispose();
     }//GEN-LAST:event_servicosActionPerformed
 
     private void funcionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_funcionariosActionPerformed
-        // TODO add your handling code here:
+        FuncionarioView funcionarioView = new FuncionarioView();
+
+        funcionarioView.setLocationRelativeTo(null);
+
+        funcionarioView.setVisible(true);
+
+        dispose();
     }//GEN-LAST:event_funcionariosActionPerformed
 
     /**
@@ -137,6 +153,7 @@ public class Home extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Home().setVisible(true);
+
             }
         });
     }
