@@ -70,6 +70,8 @@ public class ControllerFuncionario extends ControllerFileTxt {
     }
 
     public FuncionarioModel buscarFuncionario(int id) {
+        ler("funcionarios.txt");
+        
         for (FuncionarioModel funcionario : funcionarios) {
             if (funcionario.getIdFuncionario() == id) {
                 return funcionario;

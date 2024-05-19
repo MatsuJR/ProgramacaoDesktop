@@ -78,6 +78,9 @@ public class ControllerServico extends ControllerFileTxt {
     }
 
     public ServicoModel buscarServico(int id) {
+        ler("servicos.txt");
+
+        
         for (ServicoModel servico : servicos) {
             if (servico.getIdServico() == id) {
                 return servico;

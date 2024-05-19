@@ -5,6 +5,8 @@
 package View;
 
 import Controller.ControllerCliente;
+import Model.ClienteModel;
+
 import javax.swing.JOptionPane;
 
 /**
@@ -43,6 +45,7 @@ public class ClienteView extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jButtonVoltar = new javax.swing.JButton();
         jButtonAdicionar = new javax.swing.JButton();
+        jButtonConsultar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -97,6 +100,13 @@ public class ClienteView extends javax.swing.JFrame {
             }
         });
 
+        jButtonConsultar.setText("Consultar");
+        jButtonConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConsultarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -123,7 +133,7 @@ public class ClienteView extends javax.swing.JFrame {
                                     .addComponent(jTextFieldId, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jTextFieldTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
+                        .addContainerGap()
                         .addComponent(jButtonAdicionar)
                         .addGap(18, 18, 18)
                         .addComponent(jButtonExcluir)
@@ -132,8 +142,12 @@ public class ClienteView extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jButtonListar)
                         .addGap(18, 18, 18)
-                        .addComponent(jButtonVoltar)))
+                        .addComponent(jButtonConsultar)))
                 .addContainerGap(15, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButtonVoltar)
+                .addGap(14, 14, 14))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -156,14 +170,16 @@ public class ClienteView extends javax.swing.JFrame {
                     .addComponent(jTextFieldEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonExcluir)
                     .addComponent(jButtonAlterar)
                     .addComponent(jButtonListar)
-                    .addComponent(jButtonVoltar)
-                    .addComponent(jButtonAdicionar))
-                .addGap(44, 44, 44))
+                    .addComponent(jButtonAdicionar)
+                    .addComponent(jButtonConsultar))
+                .addGap(33, 33, 33)
+                .addComponent(jButtonVoltar)
+                .addGap(29, 29, 29))
         );
 
         pack();
@@ -228,6 +244,19 @@ public class ClienteView extends javax.swing.JFrame {
         jTextFieldEndereco.setText("");
     }//GEN-LAST:event_jButtonAdicionarActionPerformed
 
+    private void jButtonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarActionPerformed
+        int id = Integer.parseInt(jTextFieldId.getText());
+        ControllerCliente controller = new ControllerCliente();
+        ClienteModel cliente = controller.buscarCliente(id);
+        if (cliente != null) {
+            jTextFieldNome.setText(cliente.getNome());
+            jTextFieldTelefone.setText(cliente.getTelefone());
+            jTextFieldEndereco.setText(cliente.getEndereco());
+        } else {
+            JOptionPane.showMessageDialog(null, "Cliente não encontrado.", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButtonConsultarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -267,6 +296,7 @@ public class ClienteView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAdicionar;
     private javax.swing.JButton jButtonAlterar;
+    private javax.swing.JButton jButtonConsultar;
     private javax.swing.JButton jButtonExcluir;
     private javax.swing.JButton jButtonListar;
     private javax.swing.JButton jButtonVoltar;

@@ -1,5 +1,7 @@
 Model\FuncionarioModel.class
+View\ClienteView$8.class
 View\ClienteView$1.class
+View\ServicoView$7.class
 Controller\ControllerFuncionario.class
 View\FuncionarioView$3.class
 View\ClienteView$3.class
@@ -20,6 +22,7 @@ View\FuncionarioView.class
 Model\ClienteModel.class
 View\ClienteView$7.class
 View\Home$1.class
+View\FuncionarioView$7.class
 Controller\ControllerFile.class
 View\ClienteView$4.class
 View\ServicoView$1.class

@@ -74,6 +74,8 @@ public class ControllerCliente extends ControllerFileTxt {
     }
 
     public ClienteModel buscarCliente(int id) {
+        ler("clientes.txt");
+
         for (ClienteModel cliente : clientes) {
             if (cliente.getId() == id) {
                 return cliente;

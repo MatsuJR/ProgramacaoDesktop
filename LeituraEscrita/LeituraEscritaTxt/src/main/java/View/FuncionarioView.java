@@ -6,6 +6,7 @@ package View;
 
 import Controller.ControllerFuncionario;
 import javax.swing.JOptionPane;
+import Model.FuncionarioModel;
 
 /**
  *
@@ -41,6 +42,7 @@ public class FuncionarioView extends javax.swing.JFrame {
         jButtonListar = new javax.swing.JButton();
         jButtonVoltar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        jButtonConsultar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -87,6 +89,13 @@ public class FuncionarioView extends javax.swing.JFrame {
 
         jLabel4.setText("ATENÇÃO ! Para modificar e excluir use o id");
 
+        jButtonConsultar.setText("Consultar");
+        jButtonConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConsultarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -103,22 +112,27 @@ public class FuncionarioView extends javax.swing.JFrame {
                     .addComponent(jTextFieldCargoF, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jTextFieldIdF, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButtonAdicionar)
-                .addGap(18, 18, 18)
-                .addComponent(Excluir)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonAlterar)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonListar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButtonVoltar)
                 .addGap(22, 22, 22))
             .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(jLabel4)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButtonAdicionar)
+                        .addGap(18, 18, 18)
+                        .addComponent(Excluir)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonAlterar)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonListar)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonConsultar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(jLabel4)))
+                .addGap(22, 49, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -137,14 +151,16 @@ public class FuncionarioView extends javax.swing.JFrame {
                     .addComponent(jTextFieldCargoF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonAdicionar)
                     .addComponent(Excluir)
                     .addComponent(jButtonAlterar)
                     .addComponent(jButtonListar)
-                    .addComponent(jButtonVoltar))
-                .addGap(49, 49, 49))
+                    .addComponent(jButtonConsultar))
+                .addGap(24, 24, 24)
+                .addComponent(jButtonVoltar)
+                .addGap(20, 20, 20))
         );
 
         pack();
@@ -194,11 +210,24 @@ public class FuncionarioView extends javax.swing.JFrame {
 
     private void jButtonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltarActionPerformed
         Home home = new Home();
-        home.setLocationRelativeTo(null); 
+        home.setLocationRelativeTo(null);
         home.setVisible(true);
 
         dispose();
     }//GEN-LAST:event_jButtonVoltarActionPerformed
+
+    private void jButtonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarActionPerformed
+        int id = Integer.parseInt(jTextFieldIdF.getText());
+        ControllerFuncionario controller = new ControllerFuncionario();
+        FuncionarioModel funcionario = controller.buscarFuncionario(id);
+        if (funcionario != null) {
+            jTextFieldNomeF.setText(funcionario.getNomeFuncionario());
+            jTextFieldCargoF.setText(funcionario.getCargo());
+        } else {
+            JOptionPane.showMessageDialog(null, "Funcionário não encontrado.", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+
+    }//GEN-LAST:event_jButtonConsultarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -239,6 +268,7 @@ public class FuncionarioView extends javax.swing.JFrame {
     private javax.swing.JButton Excluir;
     private javax.swing.JButton jButtonAdicionar;
     private javax.swing.JButton jButtonAlterar;
+    private javax.swing.JButton jButtonConsultar;
     private javax.swing.JButton jButtonListar;
     private javax.swing.JButton jButtonVoltar;
     private javax.swing.JLabel jLabel1;
