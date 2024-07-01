@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.21.3.final using JasperReports Library version 6.21.3-4a3078d20785ebe464f18037d738d12fc98c13cf  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="35691173-297a-41c1-acbc-b1578a44df9a">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DataAdapter.xml.jrdax"/>
+	<parameter name="date1" class="java.sql.Date"/>
+	<parameter name="date2" class="java.sql.Date"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT 
+    item_em_estoque.nome,
+    SUM(pedido.quantidade)  total_itens_vendidos,
+    SUM(pedido.quantidade * item_em_estoque.preco) receita_total
+FROM 
+    pedido
+INNER JOIN 
+    item_em_estoque ON pedido.id_item = item_em_estoque.id
+WHERE 
+    pedido.data_pedido BETWEEN $P{date1} AND $P{date2}
+GROUP BY 
+    item_em_estoque.nome
+ORDER BY 
+    item_em_estoque.nome
+]]>
+	</queryString>
+	<field name="nome" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nome"/>
+		<property name="com.jaspersoft.studio.field.label" value="nome"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="item_em_estoque"/>
+	</field>
+	<field name="total_itens_vendidos" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="total_itens_vendidos"/>
+		<property name="com.jaspersoft.studio.field.label" value="total_itens_vendidos"/>
+	</field>
+	<field name="receita_total" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="receita_total"/>
+		<property name="com.jaspersoft.studio.field.label" value="receita_total"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="120" y="20" width="259" height="30" uuid="1016d05d-eecb-4ab9-941f-7b2f376eb452"/>
+				<textElement textAlignment="Center">
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[Itens vendidos e receita total]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="29" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="153" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="10" width="130" height="30" uuid="dbed9425-af1b-4c73-81db-0310429be43f"/>
+				<textElement>
+					<font size="15"/>
+				</textElement>
+				<text><![CDATA[Item em estoque:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="50" width="179" height="30" uuid="49a48c7b-c424-4bdd-bf0d-bb9ea583176c"/>
+				<textElement>
+					<font size="15"/>
+				</textElement>
+				<text><![CDATA[total de intens vendidos:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="90" width="130" height="30" uuid="d415fbaa-885e-4c51-8f43-ca661963968e"/>
+				<textElement>
+					<font size="15"/>
+				</textElement>
+				<text><![CDATA[receita total:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="200" y="10" width="100" height="30" uuid="d0adf58f-9ac9-4cef-957e-1f49011d8072"/>
+				<textElement>
+					<font size="15"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="199" y="50" width="200" height="30" uuid="303d3657-3033-4f95-9fdb-7ecdc48003d0"/>
+				<textElement>
+					<font size="15"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{total_itens_vendidos}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="199" y="90" width="150" height="30" uuid="326449b3-d729-4969-8639-c0b5f552f7d0"/>
+				<textElement>
+					<font size="15"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{receita_total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
